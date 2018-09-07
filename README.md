@@ -18,3 +18,15 @@
 6、每个事件都有response消息，当赋值时自动应答数据到客户端，非常适合经典问答模式；
 
 7、性能突出，所有应答都是异步模式；
+
+编译：
+
+1、编译选项说明：
+
+   BOOST_INCLUDE：boost头文件所在路径
+   
+   CMAKE_BUILD_TYPE：编译类型（默认Debug）
+
+2、编译命令
+
+cmake .. -LA -DBOOST_INCLUDE='/mnt/e/work/git' -DCMAKE_BUILD_TYPE=Debug

@@ -22,14 +22,25 @@
 编译：
 
 1、编译选项说明：
+
    BOOST_INCLUDE：boost头文件所在路径   
-   CMAKE_BUILD_TYPE：编译类型（默认Debug）
    
+   CMAKE_BUILD_TYPE：编译类型（默认Debug）
 
 2、编译命令
 
 进入build文件夹执行如下命令
 
+2.1 windows
+
+cmake .. -LA -DBOOST_INCLUDE='E:/work/git' -DCMAKE_BUILD_TYPE=Debug
+
+2.2 linux
+
 cmake .. -LA -DBOOST_INCLUDE='/mnt/e/work/git' -DCMAKE_BUILD_TYPE=Debug
+
 make
+
 make install
+
+（安装位置在install目录）

@@ -44,8 +44,8 @@ namespace klicen
 					}
 				}
 
-				void AllSend(const function<string(const string& session_id, const shared_ptr<Session>& session)>& _Func)
- 				{
+				/*void AllSend(const function<string(const string& session_id, const shared_ptr<Session>& session)>& _Func)
+				{
 					sessions_.ForEach([&](const string& session_id, const shared_ptr<Session>& session)
 					{
 						auto temp = _Func(session_id, session);
@@ -55,7 +55,7 @@ namespace klicen
 							session->AsyncWrite(temp);
 						}
 					});
- 				}
+				}
 
 				void AllHandle(const function<string(const string& session_id, const shared_ptr<Session>& session)>& _Func)
 				{
@@ -63,7 +63,7 @@ namespace klicen
 					{
 						_Func(session_id, session);
 					});
-				}
+				}*/
 
 			protected:
 				virtual shared_ptr <klicen::asio::ip::MessageFactory> GetMessageFactory(const string& session_id)

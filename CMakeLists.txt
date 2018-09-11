@@ -37,7 +37,7 @@ SET(LIBRARY_OUTPUT_PATH ${BUILD_DIR})
 
 ##############################编译ip#####################################
 #遍历主目录源文件
-file(GLOB_RECURSE SOURCE_FILES "./src/ip/*.cpp")
+file(GLOB_RECURSE SOURCE_FILES "./src/ip/*.cpp" "./src/ip/*.h")
 #编译静态库程序
 add_library(ip STATIC ${SOURCE_FILES})
 

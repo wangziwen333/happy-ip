@@ -89,6 +89,11 @@ namespace klicen
 					{
 						total_deal_length += deal_length;
 					}
+					// 如果没有后续包，处理的长度又为零，表示业务处理有问题，此时忽略全部数据处理
+					if (deal_length <= 0 && !has_package)
+					{
+						break;
+					}
 				}
 				if (total_deal_length == buffer_length)
 				{

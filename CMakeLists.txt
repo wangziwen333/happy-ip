@@ -20,11 +20,11 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
 #依赖包含 
-if (NOT DEFINED BOOST_INCLUDE)
-	message( FATAL_ERROR "not define BOOST_INCLUDE" )
+if (NOT DEFINED BOOST_INCLUDE_DIR)
+	message( FATAL_ERROR "not define BOOST_INCLUDE_DIR" )
 endif()
 
-include_directories(./src ./ ${BOOST_INCLUDE})
+include_directories(./src ./ ${BOOST_INCLUDE_DIR})
 
 #设置lib输出目录
 SET(LIBRARY_OUTPUT_PATH ${BUILD_DIR})
@@ -37,7 +37,7 @@ SET(LIBRARY_OUTPUT_PATH ${BUILD_DIR})
 
 ##############################编译ip#####################################
 #遍历主目录源文件
-file(GLOB_RECURSE SOURCE_FILES "./src/ip/*.cpp" "./src/ip/*.h")
+file(GLOB_RECURSE SOURCE_FILES "./src/ip/*")
 #编译静态库程序
 add_library(ip STATIC ${SOURCE_FILES})
 
@@ -46,3 +46,23 @@ set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/install/lib)
 install(TARGETS ip ARCHIVE DESTINATION ./)
 install(DIRECTORY src/ip DESTINATION ${PROJECT_SOURCE_DIR}/install/include FILES_MATCHING PATTERN "*.h")
 install(FILES singleton.h thread_pool.h DESTINATION ${PROJECT_SOURCE_DIR}/install/include)
+
+option(BUILD_EXAMPLES OFF)
+if (BUILD_EXAMPLES)
+	message (STATUS "build examples")
+	add_subdirectory(examples)
+endif()
+#if (NOT DEFINED BOOST_LIB_DIR)
+	#message( FATAL_ERROR "not define BOOST_LIB_DIR" )
+#endif()
+#LINK_DIRECTORIES(${BUILD_DIR} ${BOOST_LIB_DIR})
+#include_directories(./examples)
+##############################编译tcp_server#####################################
+#程序名
+#set(OUT_NAME tcp_server)
+#可执行程序
+#file(GLOB_RECURSE SOURCE_FILES "./examples/tcp-server/*" "./examples/utils.h")
+#add_executable(${OUT_NAME} ${SOURCE_FILES})
+#连接库
+#set(LINK_LIST ip)
+#target_link_libraries(${OUT_NAME} ${LINK_LIST})

@@ -17,7 +17,8 @@ bool ServerMessageFactory::IsConsumedForRead(const uint8_t* buffer, const size_t
 
 bool ServerMessageFactory::HandleRead(const uint8_t* buffer, const size_t& length, string& response)
 {
-	printf("receive client data: %s/n", HexToString(buffer + 4, length - 4).c_str());
+	printf("receive client data: %s\n", ToHost(buffer, length).content.c_str());
+	response = ToNetwork("server response data");
 
 	return true;
 }

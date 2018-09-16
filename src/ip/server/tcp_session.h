@@ -19,7 +19,7 @@ namespace klicen
 			class TcpSession : public enable_shared_from_this<TcpSession>, public Session
 			{
 			public:
-				TcpSession(const bool& is_closed_delay = false, const int& session_timeout = 60);
+				TcpSession(const bool is_closed_delay = false, const int session_timeout = 60);
 				void Start();
 				virtual void AsyncWrite(const string& packet, const string& tag = "") override final;
 				void SyncWrite(const string& packet);
@@ -34,7 +34,7 @@ namespace klicen
 				// Release server resource
 				void DeliverRead();
 				void HandleRead(const boost::system::error_code& ec, const size_t bytes_recvd);
-				void HandleWrite(const boost::system::error_code& ec, const size_t&, shared_ptr <WriteData> in_write_data);
+				void HandleWrite(const boost::system::error_code& ec, const size_t, shared_ptr <WriteData> in_write_data);
 				virtual void ResetTimer() override final;
 				void HandleSessionTimeout(const boost::system::error_code& ec);
 				virtual void Close(const ClosedType closed_type);

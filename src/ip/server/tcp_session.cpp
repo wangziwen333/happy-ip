@@ -10,7 +10,7 @@ namespace klicen
 	{
 		namespace ip
 		{
-			TcpSession::TcpSession(const bool& is_closed_delay, const int& session_timeout)
+			TcpSession::TcpSession(const bool is_closed_delay, const int session_timeout)
 				: Session(session_timeout), is_closed_delay_(is_closed_delay), socket_(timer_.get_io_service()) {}
 
 			void TcpSession::Start()
@@ -57,7 +57,7 @@ namespace klicen
 				}
 			}
 
-			void TcpSession::HandleWrite(const boost::system::error_code& ec, const size_t&, shared_ptr <WriteData> in_write_data)
+			void TcpSession::HandleWrite(const boost::system::error_code& ec, const size_t, shared_ptr <WriteData> in_write_data)
 			{
 				if (!ec)
 				{

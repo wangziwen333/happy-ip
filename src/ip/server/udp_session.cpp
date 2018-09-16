@@ -7,7 +7,7 @@ namespace klicen
 	{
 		namespace ip
 		{
-			UdpSession::UdpSession(udp::socket& server_socket, const int& session_timeout)
+			UdpSession::UdpSession(udp::socket& server_socket, const int session_timeout)
 				:  Session(session_timeout),server_socket_(server_socket)
 			{
 			}

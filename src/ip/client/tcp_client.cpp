@@ -8,7 +8,7 @@ namespace klicen
 	{
 		namespace ip
 		{
-			TcpClient::TcpClient(const bool& auto_reconnect, const int& session_timeout)
+			TcpClient::TcpClient(const bool auto_reconnect, const int session_timeout)
 				: TcpSession(false, session_timeout) , timer_reconnect_(timer_.get_io_service())
 			{
 				reconnect_ = auto_reconnect;
@@ -24,7 +24,7 @@ namespace klicen
 				}
 			}
 
-			void TcpClient::AsyncConnect(const string& ip_addr, const int& port)
+			void TcpClient::AsyncConnect(const string& ip_addr, const int port)
 			{
 				endpoint_ = tcp::endpoint(address::from_string(ip_addr.c_str()), port);
 				DeliverConnect(0);
@@ -53,7 +53,7 @@ namespace klicen
 				}
 			}
 
-			bool TcpClient::Connect(const string& ip_addr, const int& port, const int& waiting_seconds)
+			bool TcpClient::Connect(const string& ip_addr, const int port, const int waiting_seconds)
 			{
 				endpoint_ = tcp::endpoint(address::from_string(ip_addr.c_str()), port);
 
@@ -67,7 +67,7 @@ namespace klicen
 				Close(CLOSED_BY_REMOTE);
 			}
 
-			bool TcpClient::Reconnect(const int& waiting_seconds)
+			bool TcpClient::Reconnect(const int waiting_seconds)
 			{
 				if (!endpoint_.port())
 				{

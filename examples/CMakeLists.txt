@@ -29,3 +29,25 @@ target_link_libraries(${OUT_NAME} ip)
 if(CMAKE_COMPILER_IS_GNUCXX)
 	target_link_libraries(${OUT_NAME} boost_system-mt boost_thread-mt Threads::Threads)
 endif()
+##############################编译udp_server#####################################
+#程序名
+set(OUT_NAME udp_server)
+#可执行程序
+file(GLOB_RECURSE SOURCE_FILES "./udp-server/*" "./utils.h")
+add_executable(${OUT_NAME} ${SOURCE_FILES})
+#连接库
+target_link_libraries(${OUT_NAME} ip)
+if(CMAKE_COMPILER_IS_GNUCXX)
+	target_link_libraries(${OUT_NAME} boost_system-mt boost_thread-mt Threads::Threads)
+endif()
+##############################编译udp_client#####################################
+#程序名
+set(OUT_NAME udp_client)
+#可执行程序
+file(GLOB_RECURSE SOURCE_FILES "./udp-client/*" "./utils.h")
+add_executable(${OUT_NAME} ${SOURCE_FILES})
+#连接库
+target_link_libraries(${OUT_NAME} ip)
+if(CMAKE_COMPILER_IS_GNUCXX)
+	target_link_libraries(${OUT_NAME} boost_system-mt boost_thread-mt Threads::Threads)
+endif()

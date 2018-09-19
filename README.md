@@ -10,7 +10,7 @@
          （2）会话管理（方便做超时控制、推送消息以及回收资源）；
 
          （3）收发数据与业务逻辑隔离（读取数据后放入线程池处理，不阻塞读事件）；
-
+         
          （4）关闭延迟（特别适合TCP移动通信，TCP会话经常关闭但却不会一直投递关闭事件）；
 
          （5）自动分包（自动处理后续包问题，完整包数据提交给上层应用）；
@@ -24,6 +24,8 @@
    BOOST_INCLUDE：boost头文件所在路径   
    
    CMAKE_BUILD_TYPE：编译类型（默认Debug）
+   
+   BUILD_EXAMPLES: 是否编译样例（默认OFF）
 
 2、编译命令
 
@@ -31,11 +33,11 @@
 
 2.1 windows
 
-cmake .. -LA -DBOOST_INCLUDE='E:/work/git' -DCMAKE_BUILD_TYPE=Debug
+cmake .. -LA -DBOOST_INCLUDE='E:/work/git' -DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=ON
 
 2.2 linux
 
-cmake .. -LA -DBOOST_INCLUDE='/mnt/e/work/git' -DCMAKE_BUILD_TYPE=Debug
+cmake .. -LA -DBOOST_INCLUDE='/mnt/e/work/git' -DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=ON
 
 make
 

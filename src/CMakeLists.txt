@@ -1,0 +1,6 @@
+﻿add_subdirectory(ip)
+option(BUILD_NETWORK OFF)
+if (BUILD_NETWORK)
+	message (STATUS "build network")
+	add_subdirectory(network)
+endif()

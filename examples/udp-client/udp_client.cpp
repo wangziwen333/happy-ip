@@ -15,10 +15,6 @@ int main()
 	auto const port = 1235;
 	auto udp_client = make_shared <UdpClient>(ip, port);
 	udp_client->SetMessageFactory(shared_ptr <klicen::asio::ip::MessageFactory>(new ClientMessageFactory));
-	//udp_client->Test();
-	/*cout << "connect to " << ip << ":" << port << endl;
-	tcp_client->Connect(ip, port);
-	cout << "connection is successful" << endl;*/
 	thread t([]() { IoServicePool::singleton::GetInstance()->Run(); });
 	t.detach();
 	while (true)

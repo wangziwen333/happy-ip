@@ -2,7 +2,7 @@
 	message( FATAL_ERROR "not define BOOST_LIB_DIR" )
 endif()
 
-include_directories(./)
+include_directories(./ ${PROJECT_SOURCE_DIR}/src)
 LINK_DIRECTORIES(${BUILD_DIR} ${BOOST_LIB_DIR})
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)

@@ -1,0 +1,8 @@
+syntax = "proto2";
+package happy.utils.network;
+
+message ResponseError
+{
+	required int32 error_code = 1;
+	required string error_string = 2;
+}

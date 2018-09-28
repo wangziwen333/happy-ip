@@ -1,13 +1,11 @@
-#ifndef _KLICEN_UTILS_SERVER_IO_SERVICE_POOL_H_
-#define _KLICEN_UTILS_SERVER_IO_SERVICE_POOL_H_
-
+#pragma once
 #include <boost/asio.hpp>
 #include <singleton.h>
 #include <mutex>
 #include <string>
 #include <vector>
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{
@@ -49,5 +47,3 @@ namespace klicen
 		}
 	}
 }
-
-#endif

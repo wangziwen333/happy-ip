@@ -5,7 +5,7 @@
 #include <string>
 using namespace boost::asio::ip;
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{

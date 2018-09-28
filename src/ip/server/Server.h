@@ -3,7 +3,7 @@
 #include <ip/message_factory.h>
 #include <ip/server/session.h>
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{
@@ -17,7 +17,7 @@ namespace klicen
 					: session_timeout_(session_timeout)
 				{}
 
-				void SetMessageFactory(shared_ptr <klicen::asio::ip::MessageFactory> message_factory)
+				void SetMessageFactory(shared_ptr <happy::asio::ip::MessageFactory> message_factory)
 				{
 					message_factory_ = message_factory;
 				}
@@ -66,7 +66,7 @@ namespace klicen
 				}*/
 
 			protected:
-				virtual shared_ptr <klicen::asio::ip::MessageFactory> GetMessageFactory(const string& session_id)
+				virtual shared_ptr <happy::asio::ip::MessageFactory> GetMessageFactory(const string& session_id)
 				{
 					return message_factory_->Create(session_id);
 				}
@@ -95,7 +95,7 @@ namespace klicen
 				const int session_timeout_;
 			private:
 				UnorderedMapSafe <string, shared_ptr<Session>> sessions_;
-				shared_ptr <klicen::asio::ip::MessageFactory> message_factory_{ new klicen::asio::ip::MessageFactory };
+				shared_ptr <happy::asio::ip::MessageFactory> message_factory_{ new happy::asio::ip::MessageFactory };
 			};
 		}
 	}

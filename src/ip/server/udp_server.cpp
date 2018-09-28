@@ -2,7 +2,7 @@
 #include <ip/io_service_pool.h>
 using namespace boost::asio;
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{

@@ -1,12 +1,12 @@
 #include <Ip/Server/Session.h>
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{
 		namespace ip
 		{
-			void Session::SetMessageFactory(shared_ptr <klicen::asio::ip::MessageFactory> message_factory)
+			void Session::SetMessageFactory(shared_ptr <happy::asio::ip::MessageFactory> message_factory)
 			{
 				message_factory_ = message_factory;
 			}

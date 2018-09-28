@@ -2,7 +2,7 @@
 #include <thread>
 using namespace std::chrono;
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{

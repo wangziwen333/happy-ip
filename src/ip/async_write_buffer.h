@@ -5,7 +5,7 @@
 #include <mutex>
 using namespace std;
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{

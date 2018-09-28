@@ -6,7 +6,7 @@
 using namespace std;
 using namespace boost::asio;
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{

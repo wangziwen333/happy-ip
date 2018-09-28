@@ -1,7 +1,7 @@
 #pragma once
 #include <ip/server/udp_session.h>
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{

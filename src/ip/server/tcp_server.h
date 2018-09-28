@@ -5,9 +5,9 @@
 #include <ip/message_factory.h>
 #include <string>
 #include <thread_pool.h>
-using namespace klicen::utils;
+using namespace happy::utils;
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{

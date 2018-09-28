@@ -5,7 +5,7 @@
 #include <ip/server/session.h>
 #include <ip/async_write_buffer.h>
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{

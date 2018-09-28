@@ -14,7 +14,7 @@
 * https://github.com/progschj/ThreadPool
 */
 
-namespace klicen
+namespace happy
 {
 	namespace utils
 	{

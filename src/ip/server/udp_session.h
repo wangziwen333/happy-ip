@@ -2,7 +2,7 @@
 #include <boost/asio.hpp>
 #include <Ip/Server/Session.h>
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{
@@ -12,7 +12,7 @@ namespace klicen
 			using namespace std::placeholders;
 			using namespace boost::asio;
 			using namespace std;
-			using namespace klicen::utils;
+			using namespace happy::utils;
 
 			class UdpSession : public enable_shared_from_this<UdpSession>, public Session
 			{

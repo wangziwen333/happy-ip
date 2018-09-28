@@ -1,7 +1,7 @@
 #include <ip/server/tcp_server.h>
 #include <ip/io_service_pool.h>
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{

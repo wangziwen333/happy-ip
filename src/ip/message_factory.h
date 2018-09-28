@@ -4,7 +4,7 @@
 #include <memory>
 using namespace std;
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{
@@ -22,9 +22,9 @@ namespace klicen
 				MessageFactory(const string& session_id = "")
 					: session_id_(session_id)
 				{}
-				virtual shared_ptr <klicen::asio::ip::MessageFactory> Create(const string& session_id) 
+				virtual shared_ptr <happy::asio::ip::MessageFactory> Create(const string& session_id) 
 				{ 
-					return make_shared <klicen::asio::ip::MessageFactory>(session_id); 
+					return make_shared <happy::asio::ip::MessageFactory>(session_id); 
 				}
 				virtual void HandleCreate(string& response){}
 				/*--------------------------------------------------------

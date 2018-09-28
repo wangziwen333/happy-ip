@@ -6,6 +6,7 @@ include_directories(./ ${PROJECT_SOURCE_DIR}/src)
 LINK_DIRECTORIES(${BUILD_DIR} ${BOOST_LIB_DIR})
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
+
 ##############################编译tcp_server#####################################
 #程序名
 set(OUT_NAME tcp_server)

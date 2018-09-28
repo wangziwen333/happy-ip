@@ -6,12 +6,12 @@
 #include <ip/io_service_pool.h>
 #include <ip/async_write_buffer.h>
 #include <thread_pool.h>
-using namespace klicen::utils;
+using namespace happy::utils;
 using namespace std;
 using namespace boost::asio;
 using namespace std::placeholders;
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{
@@ -20,7 +20,7 @@ namespace klicen
 			class Session
 			{
 			public:
-				void SetMessageFactory(shared_ptr <klicen::asio::ip::MessageFactory> message_factory);
+				void SetMessageFactory(shared_ptr <happy::asio::ip::MessageFactory> message_factory);
 				void SetCloseHandler(const function <void(const string&)>& handler);
 				void SetMessageFactoryRead(const function <void(const string)>& handler);
 				virtual void AsyncWrite(const string& buffer, const string& tag = "") = 0;
@@ -35,7 +35,7 @@ namespace klicen
 				void HandleRead(const uint8_t* in_buffer, const size_t& in_buffer_length);
 				void Close(const ClosedType closed_type);
 			protected:
-				shared_ptr <klicen::asio::ip::MessageFactory> message_factory_;
+				shared_ptr <happy::asio::ip::MessageFactory> message_factory_;
 				function <void(const string&)> close_handler_ { [&](const string&){} };
 				AsyncWriteBuffer async_write_buffer_;
 				deadline_timer timer_{ IoServicePool::singleton::GetInstance()->GetNextIoService_() };

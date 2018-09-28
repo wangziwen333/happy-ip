@@ -29,3 +29,5 @@ if (BUILD_EXAMPLES)
 	message (STATUS "build examples")
 	add_subdirectory(examples)
 endif()
+
+install(FILES ${PROJECT_SOURCE_DIR}/singleton.h ${PROJECT_SOURCE_DIR}/thread_pool.h DESTINATION ${PROJECT_SOURCE_DIR}/install/include)

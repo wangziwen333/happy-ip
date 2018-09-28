@@ -1,10 +1,7 @@
 #include <ip/server/tcp_session.h>
 #include <ip/io_service_pool.h>
 
-//#define GLOG_NO_ABBREVIATED_SEVERITIES
-//#include <glog/logging.h>
-
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{
@@ -49,11 +46,6 @@ namespace klicen
 				if (async_write_buffer_.AsyncWrite(make_shared <WriteData>(packet, tag), write_data))
 				{
 					async_write(socket_, buffer(write_data->data), bind(&TcpSession::HandleWrite, shared_from_this(), _1, _2, write_data));
-					//LOG(INFO) << " async_write_buffer_ return true:" << session_id_ << "  tag:" << tag << endl;
-				}
-				else
-				{
-					//LOG(INFO) << " async_write_buffer_ return false:" << session_id_ << "  tag:" <<tag << " list size:"<< async_write_buffer_.GetWriteBufferSize()<<endl;
 				}
 			}
 
@@ -61,7 +53,6 @@ namespace klicen
 			{
 				if (!ec)
 				{
-					//LOG(INFO) << " tcp_session HandleWrite call:" << session_id_ << "  tag:"<< in_write_data->tag<<endl;
 					message_factory_->HandleWrite(in_write_data->tag);
 					shared_ptr <WriteData> write_data;
 					if (async_write_buffer_.HandleWrite(write_data))

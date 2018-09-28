@@ -2,9 +2,9 @@
 #include <ip/message_factory.h>
 #include <utils.h>
 
-class ClientMessageFactory : public klicen::asio::ip::MessageFactory
+class ClientMessageFactory : public happy::asio::ip::MessageFactory
 {
-	using klicen::asio::ip::MessageFactory::MessageFactory;
+	using happy::asio::ip::MessageFactory::MessageFactory;
 	CREATE(ClientMessageFactory);
 private:
 	virtual bool IsConsumedForRead(const uint8_t* buffer, const size_t& length, size_t& deal_length, bool& has_package) override final;

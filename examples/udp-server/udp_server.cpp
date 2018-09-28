@@ -1,6 +1,6 @@
 #include <ip/server/udp_server.h>
 #include "server_message_factory.h"
-using namespace klicen::asio::ip;
+using namespace happy::asio::ip;
 
 int main()
 {

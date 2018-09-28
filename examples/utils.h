@@ -12,7 +12,7 @@ struct NetworkData
 
 #define CREATE(class_name); \
 	private: \
-	virtual shared_ptr <klicen::asio::ip::MessageFactory> Create(const string& session_id) override final { return make_shared <class_name>(session_id); }
+	virtual shared_ptr <happy::asio::ip::MessageFactory> Create(const string& session_id) override final { return make_shared <class_name>(session_id); }
 
 inline string HexToString(const uint8_t* buffer, const size_t length, const string& separator = "")
 {

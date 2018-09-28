@@ -1,7 +1,7 @@
 #include <ip/server/udp_session.h>
 #include <ip/io_service_pool.h>
 
-namespace klicen
+namespace happy
 {
 	namespace asio
 	{

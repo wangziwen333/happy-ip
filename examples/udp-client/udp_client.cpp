@@ -5,7 +5,7 @@
 #include <thread>
 #include <chrono>
 using namespace std;
-using namespace klicen::asio::ip;
+using namespace happy::asio::ip;
 
 int main()
 {
@@ -14,7 +14,7 @@ int main()
 	auto const ip = "127.0.0.1";
 	auto const port = 1235;
 	auto udp_client = make_shared <UdpClient>(ip, port);
-	udp_client->SetMessageFactory(shared_ptr <klicen::asio::ip::MessageFactory>(new ClientMessageFactory));
+	udp_client->SetMessageFactory(shared_ptr <happy::asio::ip::MessageFactory>(new ClientMessageFactory));
 	thread t([]() { IoServicePool::singleton::GetInstance()->Run(); });
 	t.detach();
 	while (true)

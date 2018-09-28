@@ -70,23 +70,21 @@ namespace happy
 #pragma pack(push, 1)
 				struct NetworkHeader
 				{
-					int session_id;
-					int message_name_length;
-					int content_length;
-					uint8_t content_compress_type; // 0: uncompress; 1: klz uncompress
-					uint32_t check_sum;
+					int session_id; // 会话标识
+					int message_name_length; // 消息名称长度
+					int content_length; // 消息内容长度
+					uint8_t content_compress_type; // 0: 未压缩; 1: klz压缩
+					uint32_t check_sum; // 头校验和
 					DEFINE_HOST_NETWORK_CONVERT("44414");
 				};
 #pragma pack(pop)
 				struct NetworkData
 				{
-					NetworkHeader header;
-					string message_name;
-					string content;
-					uint32_t check_sum;
+					NetworkHeader header; // 消息头
+					string message_name; // 消息名称
+					string content; // 消息内容
+					uint32_t check_sum; // 校验和
 				};
-
-				
 			};
 		}
 	}

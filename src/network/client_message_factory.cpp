@@ -1,5 +1,6 @@
 #include <network/client_message_factory.h>
 #include <network/proto_network_convert.h>
+#include <network/output.h>
 
 namespace happy
 {
@@ -12,10 +13,10 @@ namespace happy
 
 			void ClientMessageFactory::HandleClose(const ClosedType closed_type)
 			{
-				/*if (closed_print_.length())
+				if (closed_print_.length())
 				{
-					LOG(WARNING) << closed_print_;
-				}*/
+					OUTPUT << closed_print_ << endl;
+				}
 			}
 		}
 	}

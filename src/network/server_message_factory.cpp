@@ -6,8 +6,8 @@ namespace happy
 	{
 		namespace network
 		{
-			ServerMessageFactory::ServerMessageFactory(const string& session_id, const bool is_read_print, NetworkConvert* network_convert, bool is_response)
-				: UtilMessageFactory(network_convert, is_read_print, is_response, session_id) {}
+			ServerMessageFactory::ServerMessageFactory(const string& session_id, const bool is_read_print, NetworkConvert* network_convert)
+				: UtilMessageFactory(network_convert, is_read_print, true, session_id) {}
 
 			shared_ptr <Message> ServerMessageFactory::Produce(const shared_ptr <News> news)
 			{

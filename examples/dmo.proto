@@ -1,0 +1,11 @@
+syntax = "proto2";
+package happy.utils.network;
+
+message RequestInfo
+{
+	required string info = 1;
+}
+message ResponseInfo
+{
+	required string info = 1;
+}

@@ -8,20 +8,31 @@ namespace happy
 	{
 		namespace network
 		{
-			UtilMessageFactory::UtilMessageFactory(NetworkConvert* network_convert, bool is_read_print, bool is_response, const string& session_id)
+			UtilMessageFactory::UtilMessageFactory(NetworkConvert* network_convert
+				, const bool is_read_print, const bool is_response, const string& session_id)
 				: happy::asio::ip::MessageFactory(session_id), network_convert_(network_convert), is_read_print_(is_read_print), is_response_(is_response) {}
 
-			/*void UtilMessageFactory::PrintMessage(const shared_ptr<Message> message)
+			void UtilMessageFactory::PrintMessage(const shared_ptr<Message> message)
 			{
 				if (is_read_print_)
 				{
-					OUTPUT << "receive message: " << message->GetDescriptor()->full_name();
+					OUTPUT << "receive message: " << message->GetDescriptor()->full_name() << endl;
 					if (message->ByteSize() && message->ByteSize() < 1024)
 					{
-						OUTPUT << message->DebugString() << endl;
+						OUTPUT << message->DebugString();
 					}
 				}
-			}*/
+			}
+
+			shared_ptr <Message> UtilMessageFactory::Produce(const shared_ptr <News> news)
+			{
+				auto it = handler_.find(news->message->GetDescriptor()->full_name());
+				if (handler_.end() == it)
+				{
+					return nullptr;
+				}
+				return it->second(news->message);
+			}
 
 			bool UtilMessageFactory::IsConsumedForRead(const uint8_t* buffer, const size_t& length, size_t& deal_length, bool& has_package)
 			{
@@ -47,7 +58,7 @@ namespace happy
 					}
 					else
 					{
-						//PrintMessage(news->message);
+						PrintMessage(news->message);
 						response_message = Produce(news);
 						if (!is_response_)
 						{

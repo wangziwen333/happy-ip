@@ -13,6 +13,9 @@ struct NetworkData
 #define CREATE(class_name); \
 	private: \
 	virtual shared_ptr <happy::asio::ip::MessageFactory> Create(const string& session_id) override final { return make_shared <class_name>(session_id); }
+#define CREATE_PROTO(class_name); \
+	private: \
+	virtual shared_ptr <happy::asio::ip::MessageFactory> Create(const string& session_id) override final { return make_shared <class_name>(session_id, true); }
 
 inline string HexToString(const uint8_t* buffer, const size_t length, const string& separator = "")
 {

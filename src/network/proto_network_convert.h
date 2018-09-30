@@ -63,9 +63,9 @@ namespace happy
 			{
 				DEFINE_SINGLETON_DEFAULT(ProtoNetworkConvert);
 			public:
-				virtual bool IsConsumed(const uint8_t* buffer, const size_t& length, size_t& deal_length, bool& has_package) override final;
-				virtual shared_ptr <News> ToProto(const uint8_t* buffer, const size_t& length) override final;
-				virtual bool ToNetwork(const shared_ptr <Message>& message, string& out_buffer, const int& session_id = 0) override final;
+				virtual bool IsConsumed(const uint8_t* buffer, const size_t length, size_t& deal_length, bool& has_package) override final;
+				virtual shared_ptr <News> ToProto(const uint8_t* buffer, const size_t length) override final;
+				virtual bool ToNetwork(const shared_ptr <Message> message, string& out_buffer, const int session_id = 0) override final;
 			private:
 #pragma pack(push, 1)
 				struct NetworkHeader

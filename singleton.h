@@ -1,7 +1,7 @@
 #pragma once
 #include <mutex>
 
-namespace klicen 
+namespace happy 
 {
 	namespace utils 
 	{
@@ -40,8 +40,8 @@ namespace klicen
 		template <typename T> std::mutex Singleton<T>::mutex_;
 #define DEFINE_SINGLETON_DEFAULT(class_name); \
 	public: \
-	friend class klicen::utils::Singleton<class_name>; \
-	typedef klicen::utils::Singleton<class_name> singleton; \
+	friend class happy::utils::Singleton<class_name>; \
+	typedef happy::utils::Singleton<class_name> singleton; \
 	private: \
 	class_name() {} \
 	virtual ~class_name() {} \
@@ -85,8 +85,8 @@ namespace klicen
 		template <typename T> std::mutex SingletonConstruct<T>::mutex_;
 #define DEFINE_SINGLETON_CONSTRUCT(class_name); \
 	public: \
-	friend class klicen::utils::SingletonConstruct<class_name>; \
-	typedef klicen::utils::SingletonConstruct<class_name> singleton; \
+	friend class happy::utils::SingletonConstruct<class_name>; \
+	typedef happy::utils::SingletonConstruct<class_name> singleton; \
 	private: \
 	virtual ~class_name() {} \
 	class_name& operator=(const class_name&)= delete;
@@ -117,8 +117,8 @@ namespace klicen
 
 #define DEFINE_SINGLETON_CONSTRUCT_NO_PARAM(class_name); \
 	public: \
-	friend class klicen::utils::SingletonConstructNoParam<class_name>; \
-	typedef klicen::utils::SingletonConstructNoParam<class_name> singleton; \
+	friend class happy::utils::SingletonConstructNoParam<class_name>; \
+	typedef happy::utils::SingletonConstructNoParam<class_name> singleton; \
 	private: \
 	class_name(); \
 	class_name& operator=(const class_name&) = delete; 
@@ -160,10 +160,10 @@ namespace klicen
 		template <typename T> std::mutex SingletonConstructWithDefault<T>::mutex_;
 #define DEFINE_SINGLETON_CONSTRUCT_WITH_DEFAULT(class_name); \
 	public: \
-	friend class klicen::utils::SingletonConstructWithDefault<class_name>; \
-	typedef klicen::utils::SingletonConstructWithDefault<class_name> singleton; \
+	friend class happy::utils::SingletonConstructWithDefault<class_name>; \
+	typedef happy::utils::SingletonConstructWithDefault<class_name> singleton; \
 	private: \
 	virtual ~class_name() {} \
 	class_name& operator=(const class_name&) = delete;
 	} // namespace utils
-} // namespace klicen
+} // namespace happy

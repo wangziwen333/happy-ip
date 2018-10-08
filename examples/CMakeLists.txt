@@ -11,7 +11,7 @@ find_package(Threads REQUIRED)
 #程序名
 set(OUT_NAME tcp_server)
 #可执行程序
-file(GLOB_RECURSE SOURCE_FILES "./tcp-server/*" "./utils.h")
+file(GLOB_RECURSE SOURCE_FILES "./tcp_server.cpp" "./utils.h" "./server_message_factory.*")
 add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip)
@@ -23,7 +23,7 @@ endif()
 #程序名
 set(OUT_NAME tcp_client)
 #可执行程序
-file(GLOB_RECURSE SOURCE_FILES "./tcp-client/*" "./utils.h")
+file(GLOB_RECURSE SOURCE_FILES "./tcp_client.cpp" "./utils.h" "./client_message_factory.*")
 add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip)
@@ -34,7 +34,7 @@ endif()
 #程序名
 set(OUT_NAME udp_server)
 #可执行程序
-file(GLOB_RECURSE SOURCE_FILES "./udp-server/*" "./utils.h")
+file(GLOB_RECURSE SOURCE_FILES "./udp_server.cpp" "./utils.h" "./server_message_factory.*")
 add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip)
@@ -45,7 +45,7 @@ endif()
 #程序名
 set(OUT_NAME udp_client)
 #可执行程序
-file(GLOB_RECURSE SOURCE_FILES "./udp-client/*" "./utils.h")
+file(GLOB_RECURSE SOURCE_FILES "./udp_client.cpp" "./utils.h" "./client_message_factory.*")
 add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip)
@@ -56,7 +56,7 @@ endif()
 #程序名
 set(OUT_NAME tcp_server_proto)
 #可执行程序
-file(GLOB_RECURSE SOURCE_FILES "./tcp-server-proto/*" "./utils.h" "./dmo.pb.*")
+file(GLOB_RECURSE SOURCE_FILES "./tcp_server_proto.cpp" "./utils.h" "./dmo.pb.*" "./proto_server_message_factory.*")
 add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip network protobuf)
@@ -71,7 +71,36 @@ endif()
 #程序名
 set(OUT_NAME tcp_client_proto)
 #可执行程序
-file(GLOB_RECURSE SOURCE_FILES "./tcp-client-proto/*" "./utils.h" "./dmo.pb.*")
+file(GLOB_RECURSE SOURCE_FILES "./tcp_client_proto.cpp" "./utils.h" "./dmo.pb.*" "./proto_client_message_factory.*")
+add_executable(${OUT_NAME} ${SOURCE_FILES})
+#连接库
+target_link_libraries(${OUT_NAME} ip network protobuf)
+if (GLOG_OUTPUT)
+	target_link_libraries(${OUT_NAME} glog)	
+endif()
+if(CMAKE_COMPILER_IS_GNUCXX)
+	target_link_libraries(${OUT_NAME} boost_system-mt boost_thread-mt Threads::Threads)
+endif()
+##############################编译udp_server_proto###############################
+#程序名
+set(OUT_NAME udp_server_proto)
+#可执行程序
+file(GLOB_RECURSE SOURCE_FILES "./udp_server_proto.cpp" "./utils.h" "./dmo.pb.*" "./proto_server_message_factory.*")
+add_executable(${OUT_NAME} ${SOURCE_FILES})
+#连接库
+target_link_libraries(${OUT_NAME} ip network protobuf)
+if (GLOG_OUTPUT)
+	target_link_libraries(${OUT_NAME} glog)	
+endif()
+if(CMAKE_COMPILER_IS_GNUCXX)
+	SET(CMAKE_EXE_LINKER_FLAGS " -no-pie")
+	target_link_libraries(${OUT_NAME} boost_system-mt boost_thread-mt Threads::Threads)
+endif()
+##############################编译udp_client_proto###############################
+#程序名
+set(OUT_NAME udp_client_proto)
+#可执行程序
+file(GLOB_RECURSE SOURCE_FILES "./udp_client_proto.cpp" "./utils.h" "./dmo.pb.*" "./proto_client_message_factory.*")
 add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip network protobuf)

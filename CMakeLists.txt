@@ -12,8 +12,6 @@ endif()
 message(STATUS "Build " ${CMAKE_BUILD_TYPE})
 
 if(CMAKE_COMPILER_IS_GNUCXX)
-    #add_compile_options(-fpermissive)
-    #message(STATUS "optional: -fpermissive")  
     add_compile_options(-std=c++11)
     message(STATUS "optional: -std=c++11")   
 endif(CMAKE_COMPILER_IS_GNUCXX)

@@ -7,14 +7,12 @@ message(STATUS "clean build file")
 
 #debug或release模式
 if(NOT CMAKE_BUILD_TYPE)
-	set(CMAKE_BUILD_TYPE "Debug") 
+	set(CMAKE_BUILD_TYPE "Release")
 endif()
 message(STATUS "Build " ${CMAKE_BUILD_TYPE})
 
-if(CMAKE_COMPILER_IS_GNUCXX)
-    add_compile_options(-std=c++11)
-    message(STATUS "optional: -std=c++11")   
-endif(CMAKE_COMPILER_IS_GNUCXX)
+add_compile_options(-std=c++14)
+message(STATUS "optional: -std=c++14")
 
 if (NOT DEFINED BOOST_INCLUDE_DIR)
 	message( FATAL_ERROR "not define BOOST_INCLUDE_DIR" )
@@ -34,4 +32,5 @@ if (BUILD_EXAMPLES)
 	add_subdirectory(examples)
 endif()
 
-install(FILES ${PROJECT_SOURCE_DIR}/singleton.h ${PROJECT_SOURCE_DIR}/thread_pool.h ${PROJECT_SOURCE_DIR}/config_glog.h DESTINATION ${PROJECT_SOURCE_DIR}/install/include)
+install(FILES ${PROJECT_SOURCE_DIR}/singleton.h ${PROJECT_SOURCE_DIR}/thread_pool.h
+		${PROJECT_SOURCE_DIR}/config_glog.h DESTINATION ${PROJECT_SOURCE_DIR}/install/include)

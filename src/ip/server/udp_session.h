@@ -1,6 +1,6 @@
 #pragma once
 #include <boost/asio.hpp>
-#include <Ip/Server/Session.h>
+#include <ip/server/session.h>
 
 namespace happy
 {
@@ -21,14 +21,14 @@ namespace happy
 				virtual void AsyncWrite(const string& buffer, const string& tag = "") override final;
 				void HandleRead(const uint8_t* buffer, const size_t length);
 				udp::endpoint& GetRemoteEndpoint_();
-				virtual string GetSessionId();
+				virtual string GetSessionId() override final;
 			private:
 				udp::socket& server_socket_;
 			protected:
 				udp::endpoint remote_endpoint_;
 			private:
 				void HandleWrite(const boost::system::error_code& error, const size_t bytes_sent);
-				void ResetTimer();
+				virtual void ResetTimer() override final;
 				void HandleSessionTimeout(const boost::system::error_code& ec);
 			};
 

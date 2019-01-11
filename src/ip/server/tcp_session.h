@@ -24,7 +24,7 @@ namespace happy
 				virtual void AsyncWrite(const string& packet, const string& tag = "") override final;
 				void SyncWrite(const string& packet);
 				tcp::socket& GetSocket_();
-				virtual string GetSessionId();
+				virtual string GetSessionId() override final;
 			protected:
 				const bool is_closed_delay_;
 				tcp::socket socket_;

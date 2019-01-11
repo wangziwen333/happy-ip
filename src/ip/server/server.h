@@ -10,10 +10,10 @@ namespace happy
 		namespace ip
 		{
 #define CLOSE_HANDLE [&](const string& session_id){ DeleteSession(session_id); }
-			class Server
+			class server
 			{
 			public:
-				Server(const int session_timeout)
+				server(const int session_timeout)
 					: session_timeout_(session_timeout)
 				{}
 

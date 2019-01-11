@@ -6,7 +6,7 @@
 #include <ip/io_service_pool.h>
 #include <ip/async_write_buffer.h>
 #include <thread_pool.h>
-using namespace happy::utils;
+using utils::ThreadPool;
 using namespace std;
 using namespace boost::asio;
 using namespace std::placeholders;

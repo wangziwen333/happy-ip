@@ -8,7 +8,7 @@ namespace happy
 		namespace ip
 		{
 			TcpServer::TcpServer(const uint16_t& port, const std::string &ip, const bool& is_closed_delay, const int& session_timeout, const bool& is_start_delay, const int read_work_threads)
-				: Server(session_timeout), is_closed_delay_(is_closed_delay), is_start_delay_(is_start_delay)
+				: server(session_timeout), is_closed_delay_(is_closed_delay), is_start_delay_(is_start_delay)
 				, acceptor_(IoServicePool::singleton::GetInstance()->GetNextIoService_(), tcp::endpoint(address::from_string(ip.c_str()), port))
 			{
 				if (read_work_threads)

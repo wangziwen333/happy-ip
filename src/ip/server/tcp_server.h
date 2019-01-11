@@ -5,7 +5,7 @@
 #include <ip/message_factory.h>
 #include <string>
 #include <thread_pool.h>
-using namespace happy::utils;
+using utils::ThreadPool;
 
 namespace happy
 {
@@ -13,17 +13,17 @@ namespace happy
 	{
 		namespace ip
 		{
-			class TcpServer : public Server
+			class TcpServer : public server
 			{
 			public:
 				/*--------------------------------------------------------
-				²ÎÊı
-					port£º°ó¶¨µÄ¶Ë¿Ú
-					ip£º°ó¶¨µÄipµØÖ·
-					is_closed_delay£ºÊÇ·ñ¹Ø±ÕÑÓ³Ù£¨Èç¹ûÉèÖÃ´Ë²ÎÊı£¬Ö»ÓĞsession_timeoutµ½ÆÚÊ±£¬ÒµÎñ²ã²Å»áÊÕµ½closeÊÂ¼ş£©
-					session_timeout£º»á»°³¬Ê±Ê±¼ä£¨Ã¿¸ö°üÖ®¼äµÄ×î³¤¼ä¸ôÊ±¼ä£¬³¬Ê±»á×Ô¶¯¹Ø±Õ»á»°£©
-					is_start_delay£ºÆô¶¯ÑÓ³Ù£¨Èç¹ûÉèÖÃ´Ë²ÎÊı£¬ÒªÊÖ¶¯ÔËĞĞrunº¯Êı£¬·şÎñÆ÷²Å»áÆô¶¯£©
-					read_work_threads£ºÍ¶µİ¶ÁÊÂ¼şÏß³Ì³Ø´óĞ¡£¨ÉèÖÃ´Ë²ÎÊıºó£¬µ×²ã»á×Ô¶¯½«ÊÕµ½µÄÊı¾İÍ¶µİµ½Ïß³Ì³ØÖĞ´¦Àí£¬·ÀÖ¹ÒµÎñ´¦Àí×èÈû¶ÁÊÂ¼ş£©
+				å‚æ•°
+					portï¼šç»‘å®šçš„ç«¯å£
+					ipï¼šç»‘å®šçš„ipåœ°å€
+					is_closed_delayï¼šæ˜¯å¦å…³é—­å»¶è¿Ÿï¼ˆå¦‚æœè®¾ç½®æ­¤å‚æ•°ï¼Œåªæœ‰session_timeoutåˆ°æœŸæ—¶ï¼Œä¸šåŠ¡å±‚æ‰ä¼šæ”¶åˆ°closeäº‹ä»¶ï¼‰
+					session_timeoutï¼šä¼šè¯è¶…æ—¶æ—¶é—´ï¼ˆæ¯ä¸ªåŒ…ä¹‹é—´çš„æœ€é•¿é—´éš”æ—¶é—´ï¼Œè¶…æ—¶ä¼šè‡ªåŠ¨å…³é—­ä¼šè¯ï¼‰
+					is_start_delayï¼šå¯åŠ¨å»¶è¿Ÿï¼ˆå¦‚æœè®¾ç½®æ­¤å‚æ•°ï¼Œè¦æ‰‹åŠ¨è¿è¡Œrunå‡½æ•°ï¼ŒæœåŠ¡å™¨æ‰ä¼šå¯åŠ¨ï¼‰
+					read_work_threadsï¼šæŠ•é€’è¯»äº‹ä»¶çº¿ç¨‹æ± å¤§å°ï¼ˆè®¾ç½®æ­¤å‚æ•°åï¼Œåº•å±‚ä¼šè‡ªåŠ¨å°†æ”¶åˆ°çš„æ•°æ®æŠ•é€’åˆ°çº¿ç¨‹æ± ä¸­å¤„ç†ï¼Œé˜²æ­¢ä¸šåŠ¡å¤„ç†é˜»å¡è¯»äº‹ä»¶ï¼‰
 				--------------------------------------------------------*/
 				TcpServer(const uint16_t& port, const std::string &ip = "0.0.0.0", const bool& is_closed_delay = false
 					, const int& session_timeout = 0, const bool& is_start_delay = false, const int read_work_threads = 0);

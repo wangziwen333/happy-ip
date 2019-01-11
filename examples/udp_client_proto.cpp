@@ -15,7 +15,7 @@ using namespace happy::asio::ip;
 
 int main(int argc, char* argv[])
 {
-	// Ĭ�ϴ����̳߳صĴ�СΪ4��
+	// 默认创建线程池的大小为4
 	//IoServicePool::singleton::Create(4); 
 #ifdef GLOG_OUTPUT
 	happy::utils::ConfigGlog(argv[0]);

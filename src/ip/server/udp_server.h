@@ -11,7 +11,7 @@ namespace happy
 	{
 		namespace ip
 		{
-			class UdpServer : public Server
+			class UdpServer : public server
 			{
 			public:
 				UdpServer(const uint16_t& port, const std::string &ip = "0.0.0.0", const int& session_timeout = 0);

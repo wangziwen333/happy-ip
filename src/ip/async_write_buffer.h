@@ -32,7 +32,7 @@ namespace happy
 				}
 			private:
 				bool is_async_write_ = false;
-				list <shared_ptr <WriteData>> list_wirte_data_;
+				list <shared_ptr<WriteData>> list_wirte_data_;
 				mutex mutex_;
 			};
 		}

@@ -15,10 +15,8 @@ file(GLOB_RECURSE SOURCE_FILES "./tcp_server.cpp" "./utils.h" "./server_message_
 add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip)
-if(CMAKE_COMPILER_IS_GNUCXX)
-	SET(CMAKE_EXE_LINKER_FLAGS " -no-pie")
-	target_link_libraries(${OUT_NAME} boost_system-mt boost_thread-mt Threads::Threads)
-endif()
+#SET(CMAKE_EXE_LINKER_FLAGS " -no-pie")
+target_link_libraries(${OUT_NAME} boost_system boost_thread Threads::Threads)
 ##############################编译tcp_client#####################################
 #程序名
 set(OUT_NAME tcp_client)
@@ -27,9 +25,7 @@ file(GLOB_RECURSE SOURCE_FILES "./tcp_client.cpp" "./utils.h" "./client_message_
 add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip)
-if(CMAKE_COMPILER_IS_GNUCXX)
-	target_link_libraries(${OUT_NAME} boost_system-mt boost_thread-mt Threads::Threads)
-endif()
+target_link_libraries(${OUT_NAME} boost_system boost_thread Threads::Threads)
 ##############################编译udp_server#####################################
 #程序名
 set(OUT_NAME udp_server)
@@ -38,9 +34,7 @@ file(GLOB_RECURSE SOURCE_FILES "./udp_server.cpp" "./utils.h" "./server_message_
 add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip)
-if(CMAKE_COMPILER_IS_GNUCXX)
-	target_link_libraries(${OUT_NAME} boost_system-mt boost_thread-mt Threads::Threads)
-endif()
+target_link_libraries(${OUT_NAME} boost_system boost_thread Threads::Threads)
 ##############################编译udp_client#####################################
 #程序名
 set(OUT_NAME udp_client)
@@ -49,9 +43,7 @@ file(GLOB_RECURSE SOURCE_FILES "./udp_client.cpp" "./utils.h" "./client_message_
 add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip)
-if(CMAKE_COMPILER_IS_GNUCXX)
-	target_link_libraries(${OUT_NAME} boost_system-mt boost_thread-mt Threads::Threads)
-endif()
+target_link_libraries(${OUT_NAME} boost_system boost_thread Threads::Threads)
 ##############################编译tcp_server_proto###############################
 #程序名
 set(OUT_NAME tcp_server_proto)
@@ -61,12 +53,9 @@ add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip network protobuf)
 if (GLOG_OUTPUT)
-	target_link_libraries(${OUT_NAME} glog)	
+	target_link_libraries(${OUT_NAME} glog)
 endif()
-if(CMAKE_COMPILER_IS_GNUCXX)
-	SET(CMAKE_EXE_LINKER_FLAGS " -no-pie")
-	target_link_libraries(${OUT_NAME} boost_system-mt boost_thread-mt Threads::Threads)
-endif()
+target_link_libraries(${OUT_NAME} boost_system boost_thread Threads::Threads)
 ##############################编译tcp_client_proto###############################
 #程序名
 set(OUT_NAME tcp_client_proto)
@@ -76,11 +65,9 @@ add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip network protobuf)
 if (GLOG_OUTPUT)
-	target_link_libraries(${OUT_NAME} glog)	
+	target_link_libraries(${OUT_NAME} glog)
 endif()
-if(CMAKE_COMPILER_IS_GNUCXX)
-	target_link_libraries(${OUT_NAME} boost_system-mt boost_thread-mt Threads::Threads)
-endif()
+target_link_libraries(${OUT_NAME} boost_system boost_thread Threads::Threads)
 ##############################编译udp_server_proto###############################
 #程序名
 set(OUT_NAME udp_server_proto)
@@ -90,12 +77,9 @@ add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip network protobuf)
 if (GLOG_OUTPUT)
-	target_link_libraries(${OUT_NAME} glog)	
+	target_link_libraries(${OUT_NAME} glog)
 endif()
-if(CMAKE_COMPILER_IS_GNUCXX)
-	SET(CMAKE_EXE_LINKER_FLAGS " -no-pie")
-	target_link_libraries(${OUT_NAME} boost_system-mt boost_thread-mt Threads::Threads)
-endif()
+target_link_libraries(${OUT_NAME} boost_system boost_thread Threads::Threads)
 ##############################编译udp_client_proto###############################
 #程序名
 set(OUT_NAME udp_client_proto)
@@ -105,8 +89,6 @@ add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip network protobuf)
 if (GLOG_OUTPUT)
-	target_link_libraries(${OUT_NAME} glog)	
+	target_link_libraries(${OUT_NAME} glog)
 endif()
-if(CMAKE_COMPILER_IS_GNUCXX)
-	target_link_libraries(${OUT_NAME} boost_system-mt boost_thread-mt Threads::Threads)
-endif()
+target_link_libraries(${OUT_NAME} boost_system boost_thread Threads::Threads)

@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 	// 默认创建线程池的大小为4
 	//IoServicePool::singleton::Create(4); 
 #ifdef GLOG_OUTPUT
-	happy::utils::ConfigGlog(argv[0]);
+	utils::ConfigGlog(argv[0]);
 #endif
 	
 	auto const ip = "127.0.0.1";

@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 	// 默认创建线程池的大小为4
 	//IoServicePool::singleton::Create(4); 
 #ifdef GLOG_OUTPUT
-	happy::utils::ConfigGlog(argv[0]);
+	utils::ConfigGlog(argv[0]);
 #endif
 	uint16_t port = 1234;
 	TcpServer tcp_server(port);

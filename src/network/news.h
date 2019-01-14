@@ -2,6 +2,7 @@
 #include <memory>
 #include <google/protobuf/message.h>
 using namespace google::protobuf;
+using std::shared_ptr;
 
 namespace happy
 {

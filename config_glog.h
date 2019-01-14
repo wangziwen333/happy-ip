@@ -4,6 +4,7 @@
 #include <string>
 using namespace google;
 using namespace std;
+#define __linux__ 1
 
 #ifdef _WIN32
 #include <direct.h>
@@ -82,83 +83,86 @@ static void _splitpath(const char *path, char *drive, char *dir, char *fname, ch
 
 #endif
 
-namespace happy
+
+#include <dirent.h>
+
+namespace utils
 {
-	namespace utils
+	static bool CreateDir(const char *pchDirName)
 	{
-		static bool CreateDir(const char *pchDirName)
+		int nRet;
+		int nLen = strlen(pchDirName);
+		char chDirName[1024];
+
+		if (!pchDirName)
 		{
-			int nRet;
-			int nLen = strlen(pchDirName);
-			char chDirName[1024];
+			return false;
+		}
+		memcpy(chDirName, pchDirName, nLen);
 
-			if (!pchDirName)
+		//Append end character to '/'
+		if (chDirName[nLen - 1] != '/')
+		{
+			chDirName[nLen] = '/';
+			chDirName[nLen + 1] = '\0';
+			nLen++;
+		}
+
+		for (int i = 1; i < nLen; i++)
+		{
+			if ('.' == chDirName[i])
 			{
-				return false;
+				i += 2;
 			}
-			memcpy(chDirName, pchDirName, nLen);
-
-			//Append end character to '/'
-			if (chDirName[nLen - 1] != '/')
+			if (chDirName[i] == '/')
 			{
-				chDirName[nLen] = '/';
-				chDirName[nLen + 1] = '\0';
-				nLen++;
-			}
 
-			for (int i = 0; i < nLen; i++)
-			{
-				if ('.' == chDirName[i])
+				chDirName[i] = '\0';
+
+				// If directory is not exists, then create it
+				nRet = ACCESS(chDirName, 0);
+				if (nRet != 0)
 				{
-					i += 2;
-				}
-				if (chDirName[i] == '/')
-				{
-
-					chDirName[i] = '\0';
-
-					// If directory is not exists, then create it
-					nRet = ACCESS(chDirName, 0);
+					if(NULL == opendir(chDirName)) {
+						printf("file exists\n");
+					}
+					nRet = MKDIR(chDirName);
 					if (nRet != 0)
 					{
-						nRet = MKDIR(chDirName);
-						if (nRet != 0)
-						{
-							return false;
-						}
+						return false;
 					}
-					chDirName[i] = '/';
 				}
+				chDirName[i] = '/';
 			}
-
-			return true;
 		}
 
-		static string GetCurrentPath(const char* full_path)
+		return true;
+	}
+
+	static string GetCurrentPath(const char* full_path)
+	{
+		char drive[_MAX_DRIVE];
+		char dir[_MAX_DIR] = { 0 };
+		char fname[_MAX_FNAME];
+		char ext[_MAX_EXT];
+		_splitpath(full_path, drive, dir, fname, ext);
+		// If not found directory, default to current directory
+		if (0 == dir[0])
 		{
-			char drive[_MAX_DRIVE];
-			char dir[_MAX_DIR] = { 0 };
-			char fname[_MAX_FNAME];
-			char ext[_MAX_EXT];
-			_splitpath(full_path, drive, dir, fname, ext);
-			// If not found directory, default to current directory
-			if (0 == dir[0])
-			{
-				strcpy(dir, "./");
-			}
-			return dir;
+			strcpy(dir, "./");
 		}
+		return dir;
+	}
 
-		inline void ConfigGlog(const char* full_path, const int& minloglevel = GLOG_INFO, const int& min_severity = GLOG_INFO, const string& log_folder_name = "Log")
-		{
-			// Set google default parameter
-			InitGoogleLogging(full_path);
-			FLAGS_colorlogtostderr = true;
-			//FLAGS_max_log_size = 1024; // max file size 1G
-			FLAGS_log_dir = GetCurrentPath(full_path) + "//" + log_folder_name;
-			FLAGS_minloglevel = minloglevel;
-			SetStderrLogging(min_severity);
-			CreateDir(FLAGS_log_dir.c_str());
-		}
+	inline void ConfigGlog(const char* full_path, const int& minloglevel = GLOG_INFO, const int& min_severity = GLOG_INFO, const string& log_folder_name = "log")
+	{
+		// Set google default parameter
+		InitGoogleLogging(full_path);
+		FLAGS_colorlogtostderr = true;
+		//FLAGS_max_log_size = 1024; // max file size 1G
+		FLAGS_log_dir = GetCurrentPath(full_path) /*+ "//"*/ + log_folder_name;
+		FLAGS_minloglevel = minloglevel;
+		SetStderrLogging(min_severity);
+		CreateDir(FLAGS_log_dir.c_str());
 	}
 }

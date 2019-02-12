@@ -1,7 +1,6 @@
 #pragma once
 #include <singleton.h>
 #include <network/network_convert.h>
-using namespace happy::utils;
 
 #define DEFINE_HOST_NETWORK_CONVERT(format) \
 void MemoryCopyAndConvert(const uint8_t* buffer) \
@@ -70,20 +69,20 @@ namespace happy
 #pragma pack(push, 1)
 				struct NetworkHeader
 				{
-					int session_id; // »á»°±êÊ¶
-					int message_name_length; // ÏûÏ¢Ãû³Æ³¤¶È
-					int content_length; // ÏûÏ¢ÄÚÈİ³¤¶È
-					uint8_t content_compress_type; // 0: Î´Ñ¹Ëõ; 1: klzÑ¹Ëõ
-					uint32_t check_sum; // Í·Ğ£ÑéºÍ
+					int session_id; // ä¼šè¯æ ‡è¯†
+					int message_name_length; // æ¶ˆæ¯åç§°é•¿åº¦
+					int content_length; // æ¶ˆæ¯å†…å®¹é•¿åº¦
+					uint8_t content_compress_type; // 0: æœªå‹ç¼©; 1: klzå‹ç¼©
+					uint32_t check_sum; // å¤´æ ¡éªŒå’Œ
 					DEFINE_HOST_NETWORK_CONVERT("44414");
 				};
 #pragma pack(pop)
 				struct NetworkData
 				{
-					NetworkHeader header; // ÏûÏ¢Í·
-					string message_name; // ÏûÏ¢Ãû³Æ
-					string content; // ÏûÏ¢ÄÚÈİ
-					uint32_t check_sum; // Ğ£ÑéºÍ
+					NetworkHeader header; // æ¶ˆæ¯å¤´
+					string message_name; // æ¶ˆæ¯åç§°
+					string content; // æ¶ˆæ¯å†…å®¹
+					uint32_t check_sum; // æ ¡éªŒå’Œ
 				};
 			};
 		}

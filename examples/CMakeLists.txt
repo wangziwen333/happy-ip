@@ -2,8 +2,8 @@
 	message( FATAL_ERROR "not define BOOST_LIB_DIR" )
 endif()
 
-include_directories(./ ${PROJECT_SOURCE_DIR}/src)
-LINK_DIRECTORIES(${BUILD_DIR} ${BOOST_LIB_DIR})
+include_directories(./ ${PROJECT_SOURCE_DIR}/src ${PROTOBUF_INCLUDE_DIR})
+LINK_DIRECTORIES(${BUILD_DIR} ${BOOST_LIB_DIR} ${PROTOBUF_LIB_DIR})
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 
@@ -44,6 +44,13 @@ add_executable(${OUT_NAME} ${SOURCE_FILES})
 #连接库
 target_link_libraries(${OUT_NAME} ip)
 target_link_libraries(${OUT_NAME} boost_system boost_thread Threads::Threads)
+
+#RETURN()
+
+#if (NOT DEFINED PROTOBUF_INCLUDE_DIR OR NOT DEFINED PROTOBUF_LIB_DIR)
+#	message( FATAL_ERROR "not define PROTOBUF" )
+#endif()
+
 ##############################编译tcp_server_proto###############################
 #程序名
 set(OUT_NAME tcp_server_proto)

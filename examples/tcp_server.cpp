@@ -4,7 +4,7 @@ using namespace happy::asio::ip;
 
 int main()
 {
-	// Ĭ�ϴ����̳߳صĴ�СΪ4��
+	// 默认创建线程池的大小为4
 	//IoServicePool::singleton::Create(4); 
 	uint16_t port = 1234;
 	TcpServer tcp_server(port);

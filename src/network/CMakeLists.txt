@@ -1,8 +1,5 @@
 ﻿#依赖包含 
 include_directories(../)
-#if(CMAKE_COMPILER_IS_GNUCXX)
-    #add_compile_options(-fpermissive)  
-#endif(CMAKE_COMPILER_IS_GNUCXX)
 # 遍历主目录源文件
 file(GLOB_RECURSE SOURCE_FILES "./*.h" "./*.cpp" "./*.cc")
 

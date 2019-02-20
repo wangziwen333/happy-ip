@@ -37,9 +37,10 @@ cmake .. -LA -DBOOST_INCLUDE='E:/work/git' -DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAM
 
 2.2 linux
 
-cmake .. -D3RDPARTY_INCLUDE_DIR=../utils -DPROTOBUF_INCLUDE_DIR=../utils/3rdparty/include/protobuf/3.6 \
-    -DPROTOBUF_LIB_DIR=../../utils/3rdparty/lib/ubuntu/protobuf/3.6 -DBOOST_LIB_DIR=../../utils/3rdparty/lib/ubuntu \
-    -DBOOST_INCLUDE_DIR=../utils/3rdparty/include -DGLOG_OUTPUT=ON
+cmake .. -D3RDPARTY_INCLUDE_DIR=../utils -DPROTOBUF_INCLUDE_DIR=../utils/3rdparty/include/protobuf/3.6.1     \
+-DPROTOBUF_LIB_DIR=../utils/3rdparty/lib/ubuntu/protobuf/3.6.1 -DBOOST_LIB_DIR=../utils/3rdparty/lib/ubuntu/boost    \
+-DBOOST_INCLUDE_DIR=../utils/3rdparty/include -DGLOG_OUTPUT=ON -DGLOG_INCLUDE_DIR=../utils/3rdparty/include \
+-DGLOG_LIB_DIR=../utils/3rdparty/lib/ubuntu -DCMAKE_INSTALL_PREFIX=install
 
 make
 

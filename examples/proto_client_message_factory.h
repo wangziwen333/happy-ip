@@ -1,6 +1,5 @@
 #pragma once
 #include <network/client_message_factory.h>
-#include <utils.h>
 using namespace happy::utils::network;
 
 class ProtoClientMessageFactory : public ClientMessageFactory

@@ -1,5 +1,5 @@
 #include <network/util_message_factory.h>
-#include <network/output.h>
+#include <output.h>
 #include <network/response_error.pb.h>
 
 namespace happy

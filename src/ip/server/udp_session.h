@@ -12,7 +12,6 @@ namespace happy
 			using namespace std::placeholders;
 			using namespace boost::asio;
 			using namespace std;
-			using namespace happy::utils;
 
 			class UdpSession : public enable_shared_from_this<UdpSession>, public Session
 			{

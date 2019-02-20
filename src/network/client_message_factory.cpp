@@ -1,6 +1,6 @@
 #include <network/client_message_factory.h>
 #include <network/proto_network_convert.h>
-#include <network/output.h>
+#include <output.h>
 
 namespace happy
 {

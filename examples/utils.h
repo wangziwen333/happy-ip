@@ -3,7 +3,6 @@
 #include <boost/asio.hpp>
 using namespace std;
 
-// 网络数据传输结构
 struct NetworkData
 {
 	uint32_t length;

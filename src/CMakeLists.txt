@@ -1,8 +1,8 @@
 ﻿#设置lib输出目录
-SET(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/build/lib")
+#SET(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/build/lib")
 
 #设置安装库目录
-set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/install/lib)
+#set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/install/lib)
 
 add_subdirectory(ip)
 message (STATUS "build network")
